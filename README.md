@@ -7,14 +7,13 @@
 ## 🔧 **Tech Stack** 🧑‍💻
 
 - **Backend**: Ruby on Rails API
-- **Frontend**: React Native with Expo & Expo Router
-- **Authentication**: JWT Token-based authentication for user registration and login, with token storage on the client side.
+- **Frontend**: React Native
+- **Authentication**: JWT Token-based authentication for user registration and login, with token storage on the client side with expo-secure-store.
 
 ---
 
 ## 🚀 **Features** 🌟
 
-- **User Authentication**: Secure sign-up and login with JWT tokens.
-- **Token Storage**: Persistent user sessions with token storage on the client.
-- **Item Listings**: Post unwanted items for sale and manage your listings.
-- **User Profiles**: View and manage personal information and item transactions.
+- **User Authentication**: Secure sign-up, login with JWT tokens and sing out.
+- **Token Storage**: token validation on app launch. Protecting screens by checking jwt token.
+
