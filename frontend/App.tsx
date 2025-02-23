@@ -1,9 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { AuthProvider, useAuth } from "./app/context/AuthContext";
-import { Button } from "react-native";
-import Home from './app/screens/Home';
-import Login from './app/screens/Login';
+import Login from "./app/screens/Login";
+import AppTabs from "./app/navigation/AppTabs";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,22 +14,14 @@ export default function App() {
   );
 }
 
-export const Layout = () => {
-  const { authState, onLogout } = useAuth();
+const Layout = () => {
+  const { authState } = useAuth();
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         {authState?.authenticated ? (
-          <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{
-              headerRight: () => (
-                <Button title="Sign out" onPress={onLogout} />
-              ),
-            }}
-          />
+          <Stack.Screen name="AppTabs" component={AppTabs} />
         ) : (
           <Stack.Screen name="Login" component={Login} />
         )}
