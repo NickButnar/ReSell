@@ -1,6 +1,6 @@
 # ✨ **ReSell** ✨
 
-**ReSell** is a platform that helps people sell their unwanted items in a seamless and secure manner. It features a **Rails API** for the backend and a mobile client built with **React Native** using **Expo** and **expo-router**.
+**ReSell** is a platform that helps people sell their unwanted items in a seamless and secure manner. It features a **Rails API** for the backend and a mobile client built with **React Native**
 
 ---
 
