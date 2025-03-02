@@ -8,10 +8,6 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const { onLogin, onRegister } = useAuth();
 
-  if (!onLogin) {
-    console.error('onLogin is undefined');
-  }
-
   const login = async () => {
     const result = await onLogin!(email, password);
     if (result && result.error) {
