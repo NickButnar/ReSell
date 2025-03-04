@@ -3,6 +3,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import HomeHeader from "../../components/HomeHeader";
+import CreatePost from '../screens/CreatePost'
 
 const Tab = createBottomTabNavigator();
 
@@ -27,9 +28,9 @@ export default function AppTabs() {
 
       <Tab.Screen
         name="Create post"
-        component={Home}
+        component={CreatePost}
         options={{
-          header: () => <HomeHeader />,
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="plus" size={size} color={color} />
           ),
