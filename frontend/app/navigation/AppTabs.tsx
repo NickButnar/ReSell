@@ -4,10 +4,18 @@ import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import HomeHeader from "../../components/HomeHeader";
 import CreatePost from '../screens/CreatePost'
+import React, { useState } from "react";
 
-const Tab = createBottomTabNavigator();
 
 export default function AppTabs() {
+  const Tab = createBottomTabNavigator();
+
+  const [category, setCategory] = useState<string>('');
+  const onDataChanged = (category: string) => {
+    setCategory(category)
+    console.log(category, 'category!!!!!!!!!!!!!!!')
+  }
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -15,16 +23,16 @@ export default function AppTabs() {
         tabBarInactiveTintColor: "gray",
       }}
     >
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          header: () => <HomeHeader />,
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="home" size={size} color={color} />
-          ),
-        }}
-      />
+    <Tab.Screen
+      name="Home"
+      component={() => <Home category={category} />}
+      options={{
+        header: () => <HomeHeader onCategoryChanged={onDataChanged} />,
+        tabBarIcon: ({ color, size }) => (
+          <FontAwesome5 name="home" size={size} color={color} />
+        ),
+      }}
+    />
 
       <Tab.Screen
         name="Create post"
@@ -33,17 +41,6 @@ export default function AppTabs() {
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="plus" size={size} color={color} />
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="Favorites"
-        component={Home}
-        options={{
-          header: () => <HomeHeader />,
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="heart" size={size} color={color} />
           ),
         }}
       />

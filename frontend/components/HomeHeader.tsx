@@ -11,7 +11,11 @@ interface CategoryProps {
   icon: string;
 }
 
-const HomeHeader = () => {
+interface Props {
+  onCategoryChanged: (category: string) => void;
+}
+
+const HomeHeader = ({ onCategoryChanged }: Props) => {
   const [categories, setCategories] = useState<CategoryProps[]>([]);
 
   useEffect(() => {
@@ -46,6 +50,7 @@ const HomeHeader = () => {
     })
 
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    onCategoryChanged(categories[index].title);
   }
 
   return (
@@ -73,9 +78,9 @@ const HomeHeader = () => {
               <FontAwesome
                 name={category.icon as any}
                 size={20}
-                color={index === activeCategory ? 'black' : 'gray'}
+                color={index === activeCategory ? 'tomato' : 'gray'}
               />
-              <Text style={styles.categoryBtnText}>{category.title}</Text>
+              <Text style={index === activeCategory ? styles.categoryBtnTextActive : styles.categoryBtnText}>{category.title}</Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
@@ -122,9 +127,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingBottom: 8,
     borderBottomWidth: 2,
-    borderBottomColor: 'black',
+    borderBottomColor: 'tomato',
   },
   categoryBtnText: {
     fontWeight: 600,
+  },
+  categoryBtnTextActive: {
+    fontWeight: 600,
+    color: 'tomato',
   }
 })
